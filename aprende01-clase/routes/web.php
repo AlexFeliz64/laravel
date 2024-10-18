@@ -1,13 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticulosAdminController;
 use App\Http\Controllers\ArticulosController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -33,8 +34,14 @@ Route::middleware('auth')->group(function () {
 //Route::get('/articulos/show/{id}', [ArticulosController::class, 'show']);
 
 
-Route::resource('/articulos', ArticulosController::class);
-Route::get('/home', [HomeController::class]);
+//Route::resource('/articulos', ArticulosController::class);
+
+Route::get('/articulos', [ArticulosController::class, 'index'])->name('articulos.index');
+//Route::get('/home', [HomeController::class]);
+Route::get('/', HomeController::class);
+
+
+Route::resource('admin/articulos', ArticulosAdminController::class)->names('admin.articulos');
 
 
 require __DIR__.'/auth.php';

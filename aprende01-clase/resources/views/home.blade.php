@@ -1,13 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-HOME
-</body>
-</html>
+<x-guest-layout>
+    <x-slot name="header">
+        <div>
+            <img src="https://picsum.photos/200/300?random=1">
+        </div>
+    </x-slot>
+
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque debitis deserunt enim sunt tempore. At beatae dignissimos distinctio illum labore omnis ut! Aut fugiat laudantium officia praesentium ullam? A, placeat?
+
+
+    <x-slot name="footer">
+        &copy: I.E.S Castelar
+    </x-slot>
+</x-guest-layout>

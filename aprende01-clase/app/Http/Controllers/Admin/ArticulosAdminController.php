@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Articulos;
 use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
-class ArticulosController extends Controller
+class ArticulosAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,7 @@ class ArticulosController extends Controller
     {
         $articulos = Articulos::all();
         //dd($articulos);
-        return view('articulos.index')
+        return view('admin.articulos.index')
             ->with('articulos', $articulos);
     }
 
@@ -23,7 +26,8 @@ class ArticulosController extends Controller
      */
     public function create()
     {
-        //
+        $articulos = Articulos::all();
+        return view('admin.articulos.create')->with('articulos', $articulos);
     }
 
     /**
@@ -31,7 +35,12 @@ class ArticulosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            Articulos::create($request->all());
+        }catch (Exception $e){
+            log::error($e->getMessage());
+        }
+        return redirect()->route('admin.articulos.index');
     }
 
     /**

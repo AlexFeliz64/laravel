@@ -1,13 +1,18 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-ARTICULOS
-</body>
-</html>
+<x-guest-layout>
+    <x-slot name="header">
+        HOLA
+    </x-slot>
+
+    <div class="m-4 p-8 rounded shadow border-fuchsia-600 bg-amber-200">
+        <ul>
+            @foreach($articulos as $articulo)
+                <li>{{$articulo->ref}} - {{$articulo->descripcion}}</li>
+            @endforeach
+        </ul>
+    </div>
+
+    <x-slot name="footer">
+        &copy: I.E.S Castelar
+    </x-slot>
+
+</x-guest-layout>
