@@ -21,6 +21,11 @@
                         {{ __('Artículos') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('admin.proveedores.index')" :active="request()->routeIs('admin.proveedores.index')">
+                        {{ __('Proveedores') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             @if(Auth::user())
@@ -82,6 +87,11 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('admin.articulos.index')" :active="request()->routeIs('admin.articulos.index')">
                 {{ __('Artículos') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('admin.proveedores.index')" :active="request()->routeIs('admin.proveedores.index')">
+                {{ __('Proveedores') }}
             </x-responsive-nav-link>
         </div>
 

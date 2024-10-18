@@ -21,6 +21,7 @@
                         {{ __('Artículos') }}
                     </x-nav-link>
                 </div>
+
             </div>
 
             <div>
