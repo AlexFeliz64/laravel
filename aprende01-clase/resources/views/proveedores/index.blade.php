@@ -6,7 +6,7 @@
     <div class="m-4 p-8 rounded shadow border-fuchsia-600 bg-amber-200">
         <ul>
             @foreach($proveedores as $proveedor)
-                <li>{{$proveedor->ref}} - {{$proveedor->descripcion}}</li>
+                <li>{{$proveedor->nif}} - {{$proveedor->nombre}}</li>
             @endforeach
         </ul>
     </div>

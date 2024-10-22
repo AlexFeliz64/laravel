@@ -10,9 +10,9 @@
         <table class="w-full">
             <thead>
                 <tr>
-                    <th>Referencia</th>
-                    <th class="text-left">Descripción</th>
-                    <th>Precio</th>
+                    <th>NIF</th>
+                    <th class="text-left">Nombre</th>
+                    <th>Pais</th>
                 </tr>
             </thead>
             <tbody>

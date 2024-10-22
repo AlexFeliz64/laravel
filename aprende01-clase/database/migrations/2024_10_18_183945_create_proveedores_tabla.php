@@ -11,13 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('proveedores_tabla', function (Blueprint $table) {
+        Schema::create('proveedores', function (Blueprint $table) {
             $table->id();
             $table->string('nif', 15)->unique();
-            $table->string('nombre', 200);
-            $table->string('pais', 50)->nullable();
-            $table->text('productos')->nullable();
+            $table->string('razon_social', 200)->nullable()->unique();
+            $table->string('nombre', 50)->nullable()->nullable();
+            $table->string('apellido1', 50)->nullable();
+            $table->string('apellido2', 50)->nullable();
+            $table->boolean('autonomo');
+            $table->string('direccion', 200);
+            $table->string('telefono', 50);
+            $table->text('observaciones')->nullable();
             $table->timestamps();
+            //$table->unique(['nif', 'nombre', 'apellido1', 'apellido2']);
         });
     }
 
@@ -26,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('proveedores_tabla');
+        Schema::dropIfExists('proveedores');
     }
 };

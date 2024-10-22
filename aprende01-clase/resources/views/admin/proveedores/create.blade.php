@@ -25,8 +25,8 @@
 
     <div class="m-4 p-8 rounded shadow border border-fuchsia-600 bg-amber-200">
         <ul>
-            @foreach($articulos as $articulo)
-                <li>{{$articulo->ref}} - {{$articulo->descripcion}}</li>
+            @foreach($proveedores as $proveedor)
+                <li>{{$proveedor->nif}} - {{$proveedor->nombre}}</li>
             @endforeach
         </ul>
     </div>

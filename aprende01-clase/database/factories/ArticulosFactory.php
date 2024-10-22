@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Proveedores;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,11 +17,14 @@ class ArticulosFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = \Faker\Factory::create('es_ES');
+
         return [
             "ref" => fake()->regexify('[A-Z]{3}-[0-9]{3}'),
             "descripcion" => fake()->sentence(5),
             "precio" => fake()->randomFloat(2, 0, 500),
             "observaciones" => fake()->paragraph(),
+            "proveedor_id" => Proveedores::inRandomOrder()->first()->id,
         ];
     }
 }
