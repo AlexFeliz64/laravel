@@ -27,7 +27,8 @@ class ArticulosAdminController extends Controller
     public function create()
     {
         $articulos = Articulos::all();
-        return view('admin.articulos.create')->with('articulos', $articulos);
+        return view('admin.articulos.create')
+            ->with('articulos', $articulos);
     }
 
     /**

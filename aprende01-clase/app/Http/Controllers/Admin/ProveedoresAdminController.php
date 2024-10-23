@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Articulos;
 use App\Models\Proveedores;
 use Exception;
 use Illuminate\Http\Request;
@@ -26,7 +27,8 @@ class ProveedoresAdminController extends Controller
     public function create()
     {
         $proveedores = Proveedores::all();
-        return view('admin.proveedores.create')->with('proveedores', $proveedores);
+        return view('admin.proveedores.create')
+            ->with('proveedores', $proveedores);
     }
 
     /**
@@ -45,7 +47,7 @@ class ProveedoresAdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Articulos $articulos)
     {
         //
     }

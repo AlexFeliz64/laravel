@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('admin/articulos', ArticulosAdminController::class)->names('admin.articulos');
+    Route::resource('admin/proveedores', ProveedoresAdminController::class)->names('admin.proveedores');
 });
 
 //Solo carga la vista
@@ -44,8 +46,7 @@ Route::get('/proveedores', [ProveedoresController::class, 'index'])->name('prove
 Route::get('/', HomeController::class);
 
 
-Route::resource('admin/articulos', ArticulosAdminController::class)->names('admin.articulos');
-Route::resource('admin/proveedores', ProveedoresAdminController::class)->names('admin.proveedores');
+
 
 
 
