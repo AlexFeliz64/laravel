@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+class Empleado extends Model
+{
+    use HasFactory;
+
+    protected $table = 'empleados';
+
+    protected $fillable = ['nif', 'nombre', 'apellido1', 'apellido2', 'fecha_nacimiento', 'foto', 'observaciones', 'activo', 'created_at', 'updated_at', 'deleted_at'];
+
+
+}

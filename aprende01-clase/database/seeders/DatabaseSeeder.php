@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Articulos;
-use App\Models\Proveedores;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Articulo;
+use App\Models\Proveedor;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,11 +19,10 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Alecs',
             'email' => 'aalonsos21@gmail.com',
-            'password' => 'password',
+            'password' => 'password'
         ]);
-        Proveedores::factory(30)->create();
-        Articulos::factory(100)->create();
 
-
+        Proveedor::factory()->count(30)->create();
+        Articulo::factory()->count(100)->create();
     }
 }

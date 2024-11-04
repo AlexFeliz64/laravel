@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Articulos;
+use App\Models\Articulo;
 use Illuminate\Http\Request;
 
 class ArticulosController extends Controller
@@ -12,10 +12,9 @@ class ArticulosController extends Controller
      */
     public function index()
     {
-        $articulos = Articulos::all();
-        //dd($articulos);
+        $articulo = Articulo::all();
         return view('articulos.index')
-            ->with('articulos', $articulos);
+            ->with('articulos', $articulo);
     }
 
     /**

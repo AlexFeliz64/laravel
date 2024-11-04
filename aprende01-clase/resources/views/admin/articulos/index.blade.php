@@ -1,38 +1,35 @@
-<x-guest-layout>
+<x-app-layout>
     <x-slot name="header">
-        ZONA DE ADMINISTRACIÓN
+        ARTICULOS ADMIN
     </x-slot>
 
-    <a href="{{route("admin.articulos.create")}}"
-    class="border border-teal-800 bg-teal-400 rounded hover:ring-2 hover:ring-amber-600 px-2">Nuevo</a>
+    <a class="border border-teal-800 bg-teal-400 rounded shadow px-2"
+       href="{{ route('admin.articulos.create')  }}"> Nuevo </a>
 
     <div class="m-4 p-8 rounded shadow border border-fuchsia-600 bg-amber-200">
-        <table class="w-full">
+        <table class="w-full text-left">
             <thead>
-                <tr>
-                    <th>Referencia</th>
-                    <th class="text-left">Descripción</th>
-                    <th>Precio</th>
-                </tr>
+            <tr>
+                <th>Referencia</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+            </tr>
             </thead>
             <tbody>
-                @foreach($articulos as $articulo)
-                    <tr>
-                        <td class="text-center">
-                            {{$articulo->ref}}
-                        </td>
-                        <td class="">
-                            {{$articulo->descripcion}}
-                        </td>
-                        <td class="text-center">
-                            {{$articulo->precio}}
-                        </td>
-                    </tr>
-                @endforeach
-
+            @foreach ($articulos as $articulo)
+                <tr>
+                    <td>
+                        {{ $articulo->ref }}
+                    </td>
+                    <td>
+                        {{ $articulo->descripcion }}
+                    </td>
+                    <td>
+                        {{ $articulo->precio }}
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
-
-
-</x-guest-layout>
+</x-app-layout>
