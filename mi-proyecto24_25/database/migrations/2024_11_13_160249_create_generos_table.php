@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('generos', function (Blueprint $table) {
             $table->id();
+            $table->string('tipo_genero');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

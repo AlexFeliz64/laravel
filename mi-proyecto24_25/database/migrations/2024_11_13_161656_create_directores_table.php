@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->date('fecha_nacimiento');
+            $table->string('Biografia');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
