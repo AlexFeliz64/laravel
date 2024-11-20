@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('portada');
             $table->string('titulo');
             $table->string('genero');
-            $table->date('fecha');
+            $table->date('fecha_lanzamiento');
             $table->integer('duracion');
             $table->string('director')->nullable();
             $table->timestamps();

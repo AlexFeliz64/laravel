@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('directores', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellido');
+            $table->string('nombre', 30);
+            $table->string('apellido', 30)->nullable();
             $table->date('fecha_nacimiento');
+            $table->string('foto');
             $table->string('Biografia');
             $table->timestamps();
             $table->softDeletes();
