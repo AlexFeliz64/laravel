@@ -1,4 +1,4 @@
-<?php
+'<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('peliculas', function (Blueprint $table) {
             $table->id();
             $table->string('portada');
-            $table->string('titulo');
+            $table->string('titulo', 75);
             $table->string('genero');
             $table->date('fecha_lanzamiento');
             $table->integer('duracion');
             $table->string('director')->nullable();
+            $table->text('sinopsis')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
