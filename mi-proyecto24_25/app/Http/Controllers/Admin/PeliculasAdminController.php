@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PeliculaStoreRequest;
+use App\Http\Requests\PeliculaUpdateRequest;
+use App\Models\Cliente;
 use App\Models\Pelicula;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PeliculasAdminController extends Controller
 {
@@ -38,11 +42,31 @@ class PeliculasAdminController extends Controller
         $requestData = $request->validated();
 
         try {
-            $fullpath = null;
+            $fullPath = null;
+            DB::beginTransaction();
+            if ($request->hasFile('portada')) {
+                $file = $request->file('portada');
+                $uuid = \Ramsey\Uuid\Uuid::uuid4()->toString();
+                $fileName = $uuid . '.' . $requestData['titulo'] . '.'
+                    . $file->getClientOriginalExtension();
+                $destino = env('UPLOAD_PELICULAS_PORTADAS');
+                $fullPath = $file->storeAs($destino, $fileName);
+                $requestData['portada'] = $fileName;
+            }
 
-        } catch (\Exception $e){
+            Pelicula::create($requestData);
+            DB::commit();
+            return to_route('admin.peliculas.index')
+                ->with('alertSuccess', __('La pelicula ha sido guardado correctamente.'));
+        } catch (\Exception $e) {
+            DB::rollBack();
+            if ($fullPath!=null) {
+                Storage::delete($fullPath);
+            }
 
-    }
+            return to_route('admin.clientes.index')
+                ->with('alertError', __('Error: La pelicula no se ha guardado'));
+        }
     }
 
     /**
@@ -70,15 +94,40 @@ class PeliculasAdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PeliculaUpdateRequest $request, Pelicula $pelicula)
     {
         $requestData = $request->validated();
 
         try {
-            $fullpath = null;
+            $fullPath = null;
+            DB::beginTransaction();
+            if ($request->hasFile('portada')) {
+                $file = $request->file('portada');
 
-        } catch (\Exception $e){
+                if($pelicula->portada){
+                    $fullPath = $pelicula->portada;
+                } else {
+                    $uuid = \Ramsey\Uuid\Uuid::uuid4()->toString();
+                    $fileName = $uuid . '.' . $requestData['titulo'] . '.'
+                        . $file->getClientOriginalExtension();
+                }
+                $destino = env('UPLOAD_PELICULAS_PORTADAS');
+                $fullPath = $file->storeAs($destino, $fileName);
+                $requestData['portada'] = $fileName;
+            }
 
+            Pelicula::create($requestData);
+            DB::commit();
+            return to_route('admin.peliculas.index')
+                ->with('alertSuccess', __('La pelicula ha sido actualizada correctamente.'));
+        } catch (\Exception $e) {
+            DB::rollBack();
+            if ($fullPath!=null) {
+                Storage::delete($fullPath);
+            }
+
+            return to_route('admin.clientes.index')
+                ->with('alertError', __('Error: La pelicula no se ha actualizado'));
         }
     }
 
