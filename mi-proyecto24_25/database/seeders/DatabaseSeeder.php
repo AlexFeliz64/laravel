@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Pelicula;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,10 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Alecs',
-            'email' => 'alecs@gmail.com',
-            'password' => 'alecs',
-        ]);
+        Pelicula::factory()->count(5)->create();
+
+        $this->call(RolesAndPermissionsSeeder::class);
     }
 }

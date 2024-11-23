@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PeliculaStoreRequest;
 use App\Http\Requests\PeliculaUpdateRequest;
-use App\Models\Cliente;
 use App\Models\Pelicula;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -64,7 +63,7 @@ class PeliculasAdminController extends Controller
                 Storage::delete($fullPath);
             }
 
-            return to_route('admin.clientes.index')
+            return to_route('admin.peliculas.index')
                 ->with('alertError', __('Error: La pelicula no se ha guardado'));
         }
     }
@@ -126,7 +125,7 @@ class PeliculasAdminController extends Controller
                 Storage::delete($fullPath);
             }
 
-            return to_route('admin.clientes.index')
+            return to_route('admin.peliculas.index')
                 ->with('alertError', __('Error: La pelicula no se ha actualizado'));
         }
     }

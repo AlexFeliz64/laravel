@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\PeliculasAdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
@@ -19,7 +20,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
+    Route::get('/admin', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::get('/admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard.index');
     Route::resource('admin/peliculas', PeliculasAdminController::class)->names('admin.peliculas');
 
 });

@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-lime-100 border-b border-lime-100">
+<nav x-data="{ open: false }" class="bg-teal-100 border-b border-teal-100">
     <!-- Primary Navigation Menu -->
     <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -6,28 +6,21 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{route('home')}}">
-                        LOGO
-                   </a>
-               </div>
+                        <x-share.application-admin-logo class="block h-9 w-auto fill-current text-teal-800" />
+                    </a>
+                </div>
 
-               <!-- Navigation Links -->
+                <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Inicio') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('peliculas')" :active="request()->routeIs('peliculas')">
+                    <x-nav-link :href="route('admin.peliculas.index')" :active="request()->routeIs('admin.peliculas.index')">
                         {{ __('Peliculas') }}
                     </x-nav-link>
                 </div>
-                @role('ADMIN')
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
-                        {{ __('Administración') }}
-                    </x-nav-link>
-                </div>
-                @endrole
             </div>
 
             <!-- Settings Dropdown -->
@@ -47,10 +40,9 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.show')">
-                                {{ __('Perfil') }}
+                            <x-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Profile') }}
                             </x-dropdown-link>
-
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
@@ -62,14 +54,14 @@
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Entrar</a>
-                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Registrarse</a>
+                    <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
                 @endauth
             </div>
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-lime-400 hover:text-lime-500 hover:bg-lime-100 focus:outline-none focus:bg-lime-100 focus:text-lime-500 transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-teal-400 hover:text-teal-500 hover:bg-teal-100 focus:outline-none focus:bg-teal-100 focus:text-teal-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -87,30 +79,23 @@
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('peliculas')" :active="request()->routeIs('peliculas')">
+            <x-responsive-nav-link :href="route('admin.peliculas.index')" :active="request()->routeIs('admin.peliculas.index')">
                 {{ __('Peliculas') }}
             </x-responsive-nav-link>
         </div>
-        @role('Administrador')
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
-                {{ __('Administración') }}
-            </x-responsive-nav-link>
-        </div>
-        @endrole
+
+
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-lime-200">
-            @auth()
-                <div class="px-4">
-                    <div class="font-medium text-base text-lime-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-lime-500">{{ Auth::user()->email }}</div>
-                </div>
-            @endauth
+        <div class="pt-4 pb-1 border-t border-teal-200">
+            <div class="px-4">
+                <div class="font-medium text-base text-teal-800">{{ Auth::user()->name }}</div>
+                <div class="font-medium text-sm text-teal-500">{{ Auth::user()->email }}</div>
+            </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.show')">
+                <x-dropdown-link href="{{ route('profile.show') }}">
                     {{ __('Profile') }}
-                </x-responsive-nav-link>
+                </x-dropdown-link>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}" x-data>
