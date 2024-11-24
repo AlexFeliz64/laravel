@@ -20,10 +20,4 @@
         'submit'=>true])
     </form>
 
-    <div class="bg-white shadow-xl rounded-lg rounded-r-lg p-4 mt-4">
-
-        @include('admin.peliculas.partials.list')
-
-    </div>
-
 </x-app-layout>

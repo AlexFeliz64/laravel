@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-lime-100 border-b border-lime-100">
+<nav x-data="{ open: false }" class="bg-gray-300 border-b border-lime-100">
     <!-- Primary Navigation Menu -->
     <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -6,27 +6,23 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{route('home')}}">
-                        LOGO
-                   </a>
-               </div>
+                        <x-application-logo class="block h-9 w-auto fill-current text-teal-800" />
+                    </a>
+                </div>
+            </div>
 
-               <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('Inicio') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('peliculas')" :active="request()->routeIs('peliculas')">
-                        {{ __('Peliculas') }}
-                    </x-nav-link>
-                </div>
+            <!-- Navigation Links -->
+            <div class="hidden sm:flex justify-center flex-1 space-x-8">
+                <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                    {{ __('Inicio') }}
+                </x-nav-link>
+                <x-nav-link :href="route('peliculas')" :active="request()->routeIs('peliculas')">
+                    {{ __('Peliculas') }}
+                </x-nav-link>
                 @role('ADMIN')
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
-                        {{ __('Administración') }}
-                    </x-nav-link>
-                </div>
+                <x-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
+                    {{ __('Administración') }}
+                </x-nav-link>
                 @endrole
             </div>
 
@@ -35,9 +31,8 @@
                 @auth
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-teal-500 bg-teal-100 hover:text-teal-700 focus:outline-none transition ease-in-out duration-150">
+                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-300 bg-gray-900 hover:text-red-900 focus:outline-none transition ease-in-out duration-150">
                                 <div>{{ Auth::user()->name }}</div>
-
                                 <div class="ms-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />

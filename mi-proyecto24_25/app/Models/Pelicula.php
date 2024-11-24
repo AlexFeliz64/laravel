@@ -20,6 +20,7 @@ class Pelicula extends Model
         'fecha_lanzamiento',
         'duracion',
         'director',
+        'sinopsis'
     ];
 
 }

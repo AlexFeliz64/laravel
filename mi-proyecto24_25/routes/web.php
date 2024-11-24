@@ -18,11 +18,9 @@ Route::middleware([
 ])->group(function () {
 
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('home');
     })->name('dashboard');
-    Route::get('/admin', function () {
-        return view('dashboard');
-    })->name('dashboard');
+
     Route::get('/admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard.index');
     Route::resource('admin/peliculas', PeliculasAdminController::class)->names('admin.peliculas');
 

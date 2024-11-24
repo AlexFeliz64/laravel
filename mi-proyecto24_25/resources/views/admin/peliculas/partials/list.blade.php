@@ -42,7 +42,7 @@
 
                 <!-- Duración -->
                 <td class="py-1 px-2 text-center">
-                    {{$pelicula->duracion}}
+                    {{$pelicula->duracion}} mins
                 </td>
 
                 <!-- Acciones (mostrar, borrar, editar) -->
