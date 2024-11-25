@@ -33,6 +33,12 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function peliculasDeseadas()
+    {
+        return $this->belongsToMany(Pelicula::class, 'deseados')->withTimestamps();
+    }
+
+
     /**
      * The attributes that should be hidden for serialization.
      *

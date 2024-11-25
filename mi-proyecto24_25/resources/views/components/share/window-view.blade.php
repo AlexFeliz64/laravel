@@ -35,7 +35,7 @@
                               d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 </button>
-                <div class="m-2">
+                <div class="m-2 text-black">
                     {{ $slot }}
                 </div>
 

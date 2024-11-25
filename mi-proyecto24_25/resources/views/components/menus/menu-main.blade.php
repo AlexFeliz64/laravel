@@ -19,6 +19,11 @@
                 <x-nav-link :href="route('peliculas')" :active="request()->routeIs('peliculas')">
                     {{ __('Peliculas') }}
                 </x-nav-link>
+                @auth
+                <x-nav-link :href="route('lista-deseados')" :active="request()->routeIs('lista-deseados')">
+                    {{ __('Lista de deseados') }}
+                </x-nav-link>
+                @endauth
                 @role('ADMIN')
                 <x-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
                     {{ __('Administración') }}
@@ -86,6 +91,13 @@
                 {{ __('Peliculas') }}
             </x-responsive-nav-link>
         </div>
+        @auth()
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('deseados.index')" :active="request()->routeIs('deseados.index')">
+                {{ __('Lista de deseados') }}
+            </x-responsive-nav-link>
+        </div>
+        @endauth
         @role('Administrador')
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">

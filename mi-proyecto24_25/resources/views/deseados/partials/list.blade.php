@@ -1,5 +1,5 @@
 <div>
-    <table class="w-full bg-white shadow-lg">
+    <table class="w-full bg-white shadow-lg text-black">
         <thead>
         <tr class="border-b-2 border-orange-500 py-4 uppercase">
             <th class="py-2 w-32">Portada</th>
@@ -15,14 +15,14 @@
             <tr class="even:bg-gray-100 odd:bg-white">
                 <!-- Portada -->
                 <td class="py-1 px-2 text-center align-middle">
-                    @if(empty($pelicula->portada) || $pelicula->portada == '')
-                        <img title="{{$pelicula->titulo}}"
-                             class="object-scale-down h-32 w-32 mx-auto"
-                             src="{{asset('images/imagen_no_disponible.png')}}">
-                    @else
+                    @if(!empty($pelicula->portada))
                         <img title="{{$pelicula->titulo}}"
                              class="object-scale-down h-32 w-32 mx-auto"
                              src="{{ route('images.show', ['fileType'=>'PELICULA-PORTADA', 'fileName'=>$pelicula->portada]) }}">
+                    @else
+                        <img title="{{$pelicula->titulo}}"
+                             class="object-scale-down h-32 w-32 mx-auto"
+                             src="{{asset('images/imagen_no_disponible.png')}}">
                     @endif
                 </td>
                 <!-- Título -->
@@ -45,18 +45,13 @@
                     {{$pelicula->duracion}} mins
                 </td>
 
-                <!-- Acciones (mostrar, borrar, editar) -->
+                <!-- Acciones (mostrar, borrar) -->
                 <td class="py-1 px-2 text-center">
-                    <a href="{{route('admin.peliculas.show', $pelicula->id)}}">
-                        <x-buttons.button-table action="show"/>
-                    </a>
-                    <a href="{{route('admin.peliculas.edit', $pelicula->id)}}">
-                        <x-buttons.button-table action="update"/>
-                    </a>
+                    <!-- Eliminar de los deseados -->
                     <x-share.confirm-delete :open="false"
-                                            :url="route('admin.peliculas.destroy', $pelicula->id)">
+                                            :url="route('deseados.destroy', $pelicula->id)">
 
-                        <p>¿Confirme el borrado de la película titulada "{{ $pelicula->titulo }}".</p>
+                        <p>¿Seguro que quieres eliminar "{{ $pelicula->titulo }}" de tu lista de deseados?</p>
 
                     </x-share.confirm-delete>
                 </td>

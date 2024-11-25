@@ -9,16 +9,8 @@ class PeliculasController extends Controller
 {
     public function index()
     {
-        $peliculas = Pelicula::orderBy('fecha_publicacion', 'desc')->paginate(10);
-        return view('peliculas')
-            ->with('peliculas', $peliculas);
-    }
-
-    public function show(Pelicula $pelicula)
-    {
-        $peliculas = Pelicula::orderBy('fecha_publicacion', 'desc')->paginate(10);
-        return view('admin.peliculas.show')
-            ->with('pelicula', $pelicula)
+        $peliculas = Pelicula::orderBy('fecha_publicacion', 'desc')->paginate(100);
+        return view('peliculas.index')
             ->with('peliculas', $peliculas);
     }
 }

@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        Pelicula::factory()->count(5)->create();
+        Pelicula::factory()->count(30)->create();
 
         $this->call(RolesAndPermissionsSeeder::class);
     }

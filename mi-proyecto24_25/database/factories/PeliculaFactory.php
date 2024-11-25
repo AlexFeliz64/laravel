@@ -17,7 +17,7 @@ class PeliculaFactory extends Factory
     public function definition(): array
     {
         return [
-            'portada' => $this->faker->imageUrl(100, 100, 'cats'),
+            'portada' => '',
             'titulo' => $this->faker->sentence(),
             'genero' => $this->faker->sentence(),
             'fecha_lanzamiento' => $this->faker->date(),

@@ -23,4 +23,10 @@ class Pelicula extends Model
         'sinopsis'
     ];
 
+    public function usuariosQueDesean()
+    {
+        return $this->belongsToMany(User::class, 'deseados')->withTimestamps();
+    }
+
+
 }

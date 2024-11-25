@@ -47,6 +47,15 @@
                                 <h3 class="text-xl font-bold mb-2">Sinopsis</h3>
                                 <p class="text-gray-700 leading-relaxed">{{ $pelicula->sinopsis }}</p>
                             </div>
+                            @auth
+                            <div class="mt-4 flex justify-end space-x-3">
+                                <x-share.deseados-confirm
+                                    :open="false"
+                                    :url="route('deseados.store')"
+                                    :pelicula="$pelicula"
+                                />
+                            </div>
+                            @endauth
                         </div>
                     </x-share.window-view>
                 </div>
