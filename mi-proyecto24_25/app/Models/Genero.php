@@ -17,4 +17,8 @@ class Genero extends Model
         'tipo_genero',
     ];
 
+    public function peliculaConGenero()
+    {
+        return $this->belongsTo(Pelicula::class, 'peliculas');
+    }
 }

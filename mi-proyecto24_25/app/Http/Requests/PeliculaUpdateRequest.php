@@ -23,7 +23,7 @@ class PeliculaUpdateRequest extends FormRequest
     {
         return [
             'portada' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'titulo' => 'required|max:75',
+            'titulo' => 'required|unique|max:75',
             'genero' => 'required',
             'fecha_lanzamiento' => 'required|date|before:today',
             'duracion' => 'required|numeric|min:1',

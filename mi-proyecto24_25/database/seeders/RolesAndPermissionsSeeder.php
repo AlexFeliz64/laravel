@@ -15,7 +15,7 @@ class RolesAndPermissionsSeeder extends Seeder
     public function run(): void
     {
         // Crear roles
-        $roles = ['USER', 'ADMIN', 'CLIENTE', 'EMPLE'];
+        $roles = ['USER', 'ADMIN'];
         foreach ($roles as $role) {
             Role::create(['name' => $role]);
         }
@@ -33,31 +33,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'email' => 'alecs@gmail.com',
             'password' => 'alecs',
         ]);
-        $prueba->syncRoles('CLIENTE');
+        $prueba->syncRoles('USER');
 
-//        // Crear dos empleados
-//        $empleado1 = User::factory()->create([
-//            'name' => 'Empleado1',
-//            'email' => 'empleado1@example.com',
-//            'password' => 'password1',
-//        ]);
-//        $empleado1->assignRole('EMPLE');
-//
-//        $empleado2 = User::factory()->create([
-//            'name' => 'Empleado2',
-//            'email' => 'empleado2@example.com',
-//            'password' => 'password2',
-//        ]);
-//        $empleado2->assignRole('EMPLE');
-
-        // Crear tres usuarios
-        for ($i = 1; $i <= 3; $i++) {
-            $user = User::factory()->create([
-                'name' => 'Usuario' . $i,
-                'email' => 'usuario' . $i . '@example.com',
-                'password' => 'password' . $i,
-            ]);
-            $user->assignRole('USER');
-        }
     }
 }

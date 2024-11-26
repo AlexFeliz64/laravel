@@ -21,6 +21,8 @@
     <!-- Menú principal -->
     <x-menus.menu-main/>
 
+
+    <header>
     <!-- Encabezado -->
     @if (isset($header))
         <header class="bg-gray-800 shadow-lg">
@@ -29,6 +31,10 @@
             </div>
         </header>
     @endif
+
+        <x-alerts.alert-success>{{session('alertSuccess')??null}}</x-alerts.alert-success>
+        <x-alerts.alert-error>{{session('alertError')??null}}</x-alerts.alert-error>
+    </header>
 
     <!-- Contenido principal -->
     <main class="flex-grow">

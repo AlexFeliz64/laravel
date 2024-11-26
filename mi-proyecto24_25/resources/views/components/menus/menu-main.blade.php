@@ -98,7 +98,7 @@
             </x-responsive-nav-link>
         </div>
         @endauth
-        @role('Administrador')
+        @role('ADMIN')
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
                 {{ __('Administración') }}

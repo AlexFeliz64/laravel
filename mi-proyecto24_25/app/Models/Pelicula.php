@@ -28,5 +28,10 @@ class Pelicula extends Model
         return $this->belongsToMany(User::class, 'deseados')->withTimestamps();
     }
 
+    public function generosQueTienen()
+    {
+        return $this->belongsToMany(Genero::class, 'generos')->withTimestamps();
+    }
+
 
 }
