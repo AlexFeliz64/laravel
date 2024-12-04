@@ -19,6 +19,7 @@ class Genero extends Model
 
     public function peliculaConGenero()
     {
-        return $this->belongsTo(Pelicula::class, 'peliculas');
+        return $this->hasMany(Pelicula::class);
     }
+
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Genero;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,7 @@ class PeliculaFactory extends Factory
         return [
             'portada' => '',
             'titulo' => $this->faker->sentence(),
-            'genero' => $this->faker->sentence(),
+            'genero_id' => Genero::Factory(),
             'fecha_lanzamiento' => $this->faker->date(),
             'duracion' => $this->faker->randomDigit(),
             'director' => $this->faker->name(),

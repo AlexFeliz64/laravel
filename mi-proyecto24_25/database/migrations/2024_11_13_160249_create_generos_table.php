@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('generos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->unique();
+            $table->string('nombre');
             $table->timestamps();
             $table->softDeletes();
         });

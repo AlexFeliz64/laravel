@@ -32,7 +32,7 @@
 
                 <!-- Género -->
                 <td class="py-1 px-2 text-center">
-                    {{$pelicula->genero}}
+                    {{$pelicula->genero->nombre}}
                 </td>
 
                 <!-- Fecha de lanzamiento -->

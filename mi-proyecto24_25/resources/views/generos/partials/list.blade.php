@@ -1,3 +1,25 @@
+<div class="mb-6 bg-amber-500 border-4 border-red-500">
+    <h1>Formulario de Géneros</h1> <!-- Para verificar que se está cargando la vista -->
+    <form method="GET" action="{{ route('peliculas') }}">
+        <div class="flex items-center space-x-4">
+            <!-- Select de géneros -->
+            <select name="genero_id" class="border rounded p-2">
+                <option value="">Todos los géneros</option>
+                @foreach($generos as $genero)
+                    <option value="{{ $genero->id }}" {{ request('genero_id') == $genero->id ? 'selected' : '' }}>
+                        {{ $genero->nombre }}
+                    </option>
+                @endforeach
+            </select>
+
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
+                Filtrar
+            </button>
+        </div>
+    </form>
+</div>
+
+
 <div class="container mx-auto mt-6 px-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         @foreach($peliculas as $pelicula)
@@ -48,13 +70,13 @@
                                 <p class="text-gray-700 leading-relaxed">{{ $pelicula->sinopsis }}</p>
                             </div>
                             @auth
-                            <div class="mt-4 flex justify-end space-x-3">
-                                <x-share.deseados-confirm
-                                    :open="false"
-                                    :url="route('deseados.store')"
-                                    :pelicula="$pelicula"
-                                />
-                            </div>
+                                <div class="mt-4 flex justify-end space-x-3">
+                                    <x-share.deseados-confirm
+                                        :open="false"
+                                        :url="route('deseados.store')"
+                                        :pelicula="$pelicula"
+                                    />
+                                </div>
                             @endauth
                         </div>
                     </x-share.window-view>
@@ -62,9 +84,5 @@
 
             </div>
         @endforeach
-    </div>
-    <!-- Paginación -->
-    <div class="mt-6">
-
     </div>
 </div>

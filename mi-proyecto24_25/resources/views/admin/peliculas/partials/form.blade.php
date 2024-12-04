@@ -20,7 +20,7 @@
         </div>
         <div class="col-span-12 md:col-span-6">
             <x-inputs.input-text-label id="genero" name="genero" label="Género"
-                                       :item="$pelicula->genero" readonly="{{$readonly}}"/>
+                                       :item="$pelicula->genero->nombre" readonly="{{$readonly}}"/>
         </div>
 
         <!-- Tercera fila: Fecha de lanzamiento, Duración -->

@@ -19,6 +19,9 @@
                 <x-nav-link :href="route('peliculas')" :active="request()->routeIs('peliculas')">
                     {{ __('Peliculas') }}
                 </x-nav-link>
+                <x-nav-link :href="route('generos')" :active="request()->routeIs('generos')">
+                    {{ __('Generos') }}
+                </x-nav-link>
                 @auth
                 <x-nav-link :href="route('lista-deseados')" :active="request()->routeIs('lista-deseados')">
                     {{ __('Lista de deseados') }}
@@ -89,6 +92,11 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('peliculas')" :active="request()->routeIs('peliculas')">
                 {{ __('Peliculas') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('generos')" :active="request()->routeIs('generos')">
+                {{ __('Generos') }}
             </x-responsive-nav-link>
         </div>
         @auth()

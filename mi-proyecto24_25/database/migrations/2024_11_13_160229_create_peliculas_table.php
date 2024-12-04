@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('portada');
             $table->string('titulo', 75)->unique();
-            $table->string('genero');
+            $table->foreignId('genero_id')->constrained('generos')->onDelete('cascade');
             $table->date('fecha_lanzamiento');
-            $table->foreignId('genero_id')->constrained();
+            $table->integer('duracion');
             $table->string('director')->nullable();
             $table->text('sinopsis')->nullable();
             $table->timestamps();

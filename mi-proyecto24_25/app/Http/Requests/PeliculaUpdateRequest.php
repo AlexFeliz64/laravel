@@ -24,7 +24,7 @@ class PeliculaUpdateRequest extends FormRequest
         return [
             'portada' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'titulo' => 'required|unique|max:75',
-            'genero' => 'required',
+            'genero_id' => 'required',
             'fecha_lanzamiento' => 'required|date|before:today',
             'duracion' => 'required|numeric|min:1',
             'director' => 'nullable|max:75',
@@ -45,7 +45,7 @@ class PeliculaUpdateRequest extends FormRequest
         return [
             'portada' => 'Portada',
             'titulo' => 'Titulo',
-            'genero' => 'Genero',
+            'genero_id' => 'Genero_id',
             'fecha_lanzamiento' => 'Fecha lanzamiento',
             'duracion' => 'Duración',
             'director' => 'Director',

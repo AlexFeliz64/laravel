@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Genero;
 use App\Models\Pelicula;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -17,6 +18,7 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         Pelicula::factory()->count(30)->create();
+        Genero::factory()->count(5)->create();
 
         $this->call(RolesAndPermissionsSeeder::class);
     }

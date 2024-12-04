@@ -16,7 +16,7 @@ class Pelicula extends Model
     protected $fillable = [
         'portada',
         'titulo',
-        'genero',
+        'genero_id',
         'fecha_lanzamiento',
         'duracion',
         'director',
@@ -28,9 +28,9 @@ class Pelicula extends Model
         return $this->belongsToMany(User::class, 'deseados')->withTimestamps();
     }
 
-    public function generosQueTienen()
+    public function genero()
     {
-        return $this->belongsToMany(Genero::class, 'generos')->withTimestamps();
+        return $this->belongsTo(Genero::class);
     }
 
 
