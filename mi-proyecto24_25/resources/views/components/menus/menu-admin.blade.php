@@ -26,6 +26,11 @@
                         {{ __('Peliculas') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('admin.generos.index')" :active="request()->routeIs('admin.generos.index')" class="text-white hover:text-yellow-400">
+                        {{ __('Generos') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -80,12 +85,22 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')" class="text-white hover:text-yellow-400">
+                {{ __('Volver hacia parte Cliente') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')" class="text-white hover:text-yellow-400">
                 {{ __('Inicio') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('admin.peliculas.index')" :active="request()->routeIs('admin.peliculas.index')" class="text-white hover:text-yellow-400">
                 {{ __('Peliculas') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('admin.generos.index')" :active="request()->routeIs('admin.generos.index')" class="text-white hover:text-yellow-400">
+                {{ __('Generos') }}
             </x-responsive-nav-link>
         </div>
     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PeliculaStoreRequest;
 use App\Http\Requests\PeliculaUpdateRequest;
+use App\Models\Genero;
 use App\Models\Pelicula;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,16 +28,16 @@ class PeliculasAdminController extends Controller
      */
     public function create()
     {
-        $peliculas = Pelicula::orderBy('fecha_publicacion', 'desc')->paginate(10);
+        $generos = Genero::all();
         return view('admin.peliculas.create')
             ->with('pelicula', new Pelicula())
-            ->with('peliculas', $peliculas);
+            ->with('generos', $generos);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PeliculaStoreRequest $request)
+    public function store(PeliculaStoreRequest $request, Pelicula $pelicula)
     {
         $requestData = $request->validated();
 
@@ -73,10 +74,12 @@ class PeliculasAdminController extends Controller
      */
     public function show(Pelicula $pelicula)
     {
-        $peliculas = Pelicula::orderBy('fecha_publicacion', 'desc')->paginate(10);
+        $generos = Genero::all();
+        $peliculas = Pelicula::all();;
         return view('admin.peliculas.show')
             ->with('pelicula', $pelicula)
-            ->with('peliculas', $peliculas);
+            ->with('peliculas', $peliculas)
+            ->with('generos', $generos);
     }
 
     /**
@@ -84,10 +87,12 @@ class PeliculasAdminController extends Controller
      */
     public function edit(Pelicula $pelicula)
     {
-        $peliculas = Pelicula::orderBy('fecha_publicacion', 'desc')->paginate(10);
+        $generos = Genero::all();
+        $peliculas = Pelicula::all();;
         return view('admin.peliculas.edit')
             ->with('pelicula', $pelicula)
-            ->with('peliculas', $peliculas);
+            ->with('peliculas', $peliculas)
+            ->with('generos', $generos);
     }
 
     /**
@@ -104,6 +109,7 @@ class PeliculasAdminController extends Controller
                 $file = $request->file('portada');
 
                 if($pelicula->portada){
+                    $file = $request->file('portada');
                     $fullPath = $pelicula->portada;
                 } else {
                     $uuid = \Ramsey\Uuid\Uuid::uuid4()->toString();
@@ -115,7 +121,7 @@ class PeliculasAdminController extends Controller
                 $requestData['portada'] = $fileName;
             }
 
-            Pelicula::create($requestData);
+            $pelicula->update($requestData);
             DB::commit();
             return to_route('admin.peliculas.index')
                 ->with('alertSuccess', __('La pelicula ha sido actualizada correctamente.'));

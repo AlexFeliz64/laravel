@@ -22,9 +22,9 @@ class PeliculaStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'portada' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'titulo' => 'required|unique|max:75',
-            'genero_id' => 'required',
+            'portada' => '',
+            'titulo' => 'required|max:75',
+            'genero_id' => 'required|exists:generos,id',
             'fecha_lanzamiento' => 'required|date|before:today',
             'duracion' => 'required|numeric|min:1',
             'director' => 'nullable|max:75',
@@ -32,13 +32,23 @@ class PeliculaStoreRequest extends FormRequest
         ];
     }
 
-    //public function messages(): array
-    //{
-    //    return [
-    //        'nif.requires' => 'El nif es obligatorio',
-    //        'apellido1.*' => 'El Apellido 1ª no es correcto',
-    //    ];
-    //}
+    public function messages(): array
+    {
+        return [
+            'titulo.required' => 'El título es obligatorio.',
+            'titulo.max' => 'El título no debe superar los 75 caracteres.',
+            'fecha_lanzamiento.required' => 'La fecha de lanzamiento es obligatoria.',
+            'fecha_lanzamiento.date' => 'La fecha de lanzamiento debe ser una fecha válida.',
+            'fecha_lanzamiento.before' => 'La fecha de lanzamiento debe ser anterior a hoy.',
+            'duracion.required' => 'La duración es obligatoria.',
+            'duracion.numeric' => 'La duración debe ser un número.',
+            'duracion.min' => 'La duración debe ser al menos 1 minuto.',
+            'director.max' => 'El nombre del director no debe superar los 75 caracteres.',
+            'sinopsis.string' => 'La sinopsis debe ser un texto válido.',
+            'sinopsis.max' => 'La sinopsis no debe superar los 400 caracteres.',
+        ];
+    }
+
 
     public function attributes()
     {

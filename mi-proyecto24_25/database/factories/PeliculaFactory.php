@@ -20,7 +20,7 @@ class PeliculaFactory extends Factory
         return [
             'portada' => '',
             'titulo' => $this->faker->sentence(),
-            'genero_id' => Genero::Factory(),
+            'genero_id' => Genero::query()->inRandomOrder()->value('id'),
             'fecha_lanzamiento' => $this->faker->date(),
             'duracion' => $this->faker->randomDigit(),
             'director' => $this->faker->name(),

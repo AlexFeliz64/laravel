@@ -74,7 +74,6 @@
             </div>
         </div>
 
-        <!-- Footer Bottom Text -->
         <div class="mt-6 text-left text-sm text-gray-500">
             &copy; {{ date('Y') }} {{ config('app.name', 'MoviesAlecs') }}. Todos los derechos reservados.
         </div>

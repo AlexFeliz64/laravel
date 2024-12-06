@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\GenerosAdminController;
 use App\Http\Controllers\Admin\PeliculasAdminController;
 use App\Http\Controllers\DeseadosController;
 use App\Http\Controllers\GenerosController;
@@ -28,6 +29,8 @@ Route::middleware([
     Route::get('/admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard.index');
     Route::resource('admin/peliculas', PeliculasAdminController::class)->names('admin.peliculas');
     Route::resource('deseados', DeseadosController::class)->names('deseados');
+    Route::resource('admin/generos', GenerosAdminController::class)->names('admin.generos');
+
 
 
 });

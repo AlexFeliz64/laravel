@@ -14,7 +14,7 @@ class Genero extends Model
     protected $table = 'generos';
 
     protected $fillable = [
-        'tipo_genero',
+        'nombre',
     ];
 
     public function peliculaConGenero()

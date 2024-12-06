@@ -1,9 +1,9 @@
-<div class="mb-6 bg-amber-500 border-4 border-red-500">
-    <h1>Formulario de Géneros</h1> <!-- Para verificar que se está cargando la vista -->
-    <form method="GET" action="{{ route('peliculas') }}">
-        <div class="flex items-center space-x-4">
+<div class="mb-6 bg-indigo-400 border-4 border-gray-700">
+    <form method="GET" action="{{ route('generos') }}">
+        <div class="flex flex-col items-center space-y-4">
             <!-- Select de géneros -->
-            <select name="genero_id" class="border rounded p-2">
+            <select name="genero_id"
+                class="border rounded p-4 text-black text-lg w-64 text-center">
                 <option value="">Todos los géneros</option>
                 @foreach($generos as $genero)
                     <option value="{{ $genero->id }}" {{ request('genero_id') == $genero->id ? 'selected' : '' }}>
@@ -11,13 +11,13 @@
                     </option>
                 @endforeach
             </select>
-
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
                 Filtrar
             </button>
         </div>
     </form>
 </div>
+
 
 
 <div class="container mx-auto mt-6 px-4">

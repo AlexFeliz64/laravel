@@ -16,9 +16,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+        $generos = ['Acción', 'Comedia', 'Drama', 'Terror', 'Romance'];
 
-        Pelicula::factory()->count(30)->create();
-        Genero::factory()->count(5)->create();
+        foreach ($generos as $nombre) {
+            Genero::create(['nombre' => $nombre]);
+        }
+
+
+
 
         $this->call(RolesAndPermissionsSeeder::class);
     }

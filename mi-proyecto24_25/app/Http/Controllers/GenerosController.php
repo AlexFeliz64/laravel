@@ -10,15 +10,16 @@ class GenerosController extends Controller
 {
     public function index(Request $request)
     {
-        $generos = Genero::all(); // Obtener todos los géneros
-        $peliculas = Pelicula::all(); // O agregar tu lógica para obtener las películas
+        $generos = Genero::all();
+        $peliculas = Pelicula::all();
 
-        // Si se aplica un filtro de género, agregar la condición de filtro
         if ($request->has('genero_id') && $request->genero_id != '') {
             $peliculas = $peliculas->where('genero_id', $request->genero_id);
         }
 
-        return view('peliculas.index', compact('peliculas', 'generos'));
+        return view('generos.index')
+            ->with('peliculas', $peliculas)
+            ->with('generos', $generos);
     }
 
 

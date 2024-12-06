@@ -23,8 +23,8 @@ class RolesAndPermissionsSeeder extends Seeder
         // Crear administrador y asignarle todos los roles
         $admin = User::factory()->create([
             'name' => 'Administrador',
-            'email' => 'admin@admin',
-            'password' => 'copito',
+            'email' => 'admin@gmail.com',
+            'password' => 'castelar',
         ]);
         $admin->syncRoles($roles);
 

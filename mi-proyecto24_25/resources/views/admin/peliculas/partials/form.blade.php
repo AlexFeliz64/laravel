@@ -1,4 +1,4 @@
-@props(['pelicula', 'submit' => true, 'readonly' => false])
+@props(['pelicula', 'generos', 'submit' => true, 'readonly' => false])
 
 <div class="mx-auto px-8">
 
@@ -19,8 +19,14 @@
                                        :item="$pelicula->titulo" readonly="{{$readonly}}"/>
         </div>
         <div class="col-span-12 md:col-span-6">
-            <x-inputs.input-text-label id="genero" name="genero" label="Género"
-                                       :item="$pelicula->genero->nombre" readonly="{{$readonly}}"/>
+            <label for="genero" class="text-xs block font-bold text-blue-900 mr-2 p-1">Género</label>
+            <select name="genero_id" id="genero" class="w-full px-2 py-1 border border-emerald-300 rounded" {{ $readonly ? 'disabled' : '' }}>
+                @foreach($generos as $genero)
+                    <option value="{{ $genero->id }}" {{ request('genero_id') == $genero->id ? 'selected' : '' }}>
+                        {{ $genero->nombre }}
+                    </option>
+                @endforeach
+            </select>
         </div>
 
         <!-- Tercera fila: Fecha de lanzamiento, Duración -->
