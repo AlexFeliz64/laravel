@@ -107,15 +107,9 @@ class PeliculasAdminController extends Controller
             DB::beginTransaction();
             if ($request->hasFile('portada')) {
                 $file = $request->file('portada');
-
-                if($pelicula->portada){
-                    $file = $request->file('portada');
-                    $fullPath = $pelicula->portada;
-                } else {
-                    $uuid = \Ramsey\Uuid\Uuid::uuid4()->toString();
-                    $fileName = $uuid . '.' . $requestData['titulo'] . '.'
-                        . $file->getClientOriginalExtension();
-                }
+                $uuid = \Ramsey\Uuid\Uuid::uuid4()->toString();
+                $fileName = $uuid . '.' . $requestData['titulo'] . '.'
+                    . $file->getClientOriginalExtension();
                 $destino = env('UPLOAD_PELICULAS_PORTADAS');
                 $fullPath = $file->storeAs($destino, $fileName);
                 $requestData['portada'] = $fileName;
